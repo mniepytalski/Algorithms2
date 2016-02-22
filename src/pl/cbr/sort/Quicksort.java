@@ -7,39 +7,36 @@ import java.util.Arrays;
  */
 public class Quicksort extends Sort {
 
-    int data[];
-
     public void sortuj(int data[]) {
-        this.data   = data;
-        quickSort(0,data.length-1);
+        quickSort(data,0,data.length-1);
     }
 
-    void quickSort(int lewy, int prawy) {
+    void quickSort(int data[], int lewy, int prawy) {
         if ( lewy<prawy ) {
-            int os  = podzial(lewy,prawy);
-            quickSort(lewy,os-1);
-            quickSort(os+1,prawy);
+            int os  = podzial(data,lewy,prawy);
+            quickSort(data,lewy,os-1);
+            quickSort(data,os+1,prawy);
         }
     }
 
-    int podzial(int lewy, int prawy ) {
+    int podzial(int data[], int lewy, int prawy ) {
         int o = (prawy+lewy)/2;
 
-        swap(o,prawy);
+        swap(data,o,prawy);
         int przechowywany   = lewy;
 
         for ( int i=lewy; i<prawy; i++ ) {
             if ( data[i]<=data[prawy]) {
-                swap(i, przechowywany);
+                swap(data,i, przechowywany);
                 przechowywany++;
             }
         }
-        swap(przechowywany,prawy);
+        swap(data,przechowywany,prawy);
 
        return przechowywany;
     }
 
-    void swap(int a,int b) {
+    void swap(int data[], int a,int b) {
             int tmp1 = data[a];
             data[a] = data[b];
             data[b] = tmp1;

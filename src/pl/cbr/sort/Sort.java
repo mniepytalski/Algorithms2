@@ -22,5 +22,15 @@ public abstract class Sort {
             System.out.print(data[i]+",");
         }
     }
+    
+    public boolean test(int data[]) {
+        for ( int i=0; i<data.length-1; i++ ) {
+            if ( data[i] > data[i+1] ) {
+            	return false;
+            }
+        }
+    	
+    	return true;
+    }
 
 }
