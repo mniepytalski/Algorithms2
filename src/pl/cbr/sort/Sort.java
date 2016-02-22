@@ -3,9 +3,11 @@ package pl.cbr.sort;
 /**
  * Created by Mariusz on 2015-06-20.
  */
-public abstract class Sort {
+public class Sort {
 
-    abstract public void sortuj(int data[]);
+    public void sortuj(int data[]) {
+    	
+    };
 
     public int[] prepareData(int size) {
         int  data[]  = new int[size];
