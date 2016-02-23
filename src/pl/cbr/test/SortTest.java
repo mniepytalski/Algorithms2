@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
@@ -19,13 +20,26 @@ public class SortTest {
 	
 	int data[];
 	
+	@BeforeClass
+	public static void startUp() {
+		int procs = Runtime.getRuntime().availableProcessors();
+		System.out.println("start test, procs: "+procs);		
+	}
+	
 	@Before
 	public void before() {
 		System.out.println("before");
-		Sort sort = new Sort();
+		SortPrototype sort = new SortParaller();
+
+		long t1 = System.currentTimeMillis();
+    	
+
+//		data = sort.prepareData(5);
 		data = sort.prepareData(50000000);
 //		data = sort.prepareData(1000000);
 
+        long t2 = System.currentTimeMillis();
+        System.out.println("gen time: "+(t2-t1));		
 		start();
 	}
 	

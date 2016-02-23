@@ -3,19 +3,21 @@ package pl.cbr.sort;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
-/**
- * Created by Mariusz on 2015-06-20.
- */
-public class Sort extends SortPrototype {
+public class SortParaller extends SortPrototype {
 
+	
     public void sortuj(int data[]) {
     	
     };
 
     public int[] prepareData(int size) {
         int  data[]  = new int[size];
-        IntStream.range(0,data.length).forEach(i->data[i]=(int)((Math.random())*Integer.MAX_VALUE ));
+        prepareData(data,0,data.length);
         return data;
+    }
+    
+    void prepareData(int data[],int a1, int a2) {
+        IntStream.range(a1,a2).forEach(i->data[i]=(int)((Math.random())*Integer.MAX_VALUE ));
     }
 
     public void print(int data[]) {
