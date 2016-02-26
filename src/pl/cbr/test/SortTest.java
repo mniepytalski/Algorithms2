@@ -29,7 +29,7 @@ public class SortTest {
 	@Before
 	public void before() {
 		System.out.println("before");
-		SortPrototype sort = new SortParaller();
+		SortPrototype sort = new Sort();
 
 		long t1 = System.currentTimeMillis();
     	
