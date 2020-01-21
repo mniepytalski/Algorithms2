@@ -5,7 +5,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.stream.IntStream;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import pl.cbr.sort.GenericSortTool;
