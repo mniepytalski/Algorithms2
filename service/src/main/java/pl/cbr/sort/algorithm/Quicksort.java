@@ -21,7 +21,7 @@ public class Quicksort <T extends Comparable<T>> extends SortBase<T> {
         }
     }
 
-    private int division(T data[], int left, int right ) {
+    int division(T data[], int left, int right ) {
         int o = (right+left)/2;
 
         swap(data,o,right);
@@ -38,14 +38,14 @@ public class Quicksort <T extends Comparable<T>> extends SortBase<T> {
        return stored;
     }
 
-    private void swap(T data[], int a,int b) {
+    void swap(T data[], int a,int b) {
             T tmp1 = data[a];
             data[a] = data[b];
             data[b] = tmp1;
     }
     
     
-	public void insertionSort(T data[], int left, int right) {
+	void insertionSort(T data[], int left, int right) {
 
 		for ( int j = left + 1; j <= right; j++) {
 			int i = j - 1;
