@@ -14,6 +14,7 @@ public class ParallerQuicksort<T extends Comparable<T>> extends SortBase<T> {
     ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
 
     Map<Future<Integer>, Integer> tasks = new ConcurrentHashMap<>();
+    
 
     @Override
     public void sort(T[] data) {
@@ -27,10 +28,7 @@ public class ParallerQuicksort<T extends Comparable<T>> extends SortBase<T> {
             return 0;
         }),0);
 
-        tasks.put(executor.submit(() -> {
-            quickSort(data,os + 1, right);
-            return 0;
-        }),0);
+        quickSort(data,os + 1, right);
 
         try {
             while(tasks.size() > 0) {
