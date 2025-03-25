@@ -57,12 +57,13 @@ public class GraphNode {
     public String toString() {
         String external = "";
         int count = 0;
-        for ( GraphNode g : nodes ) {
-            if ( count!=0)
-                external+=",";
-            external+= g.getName();
+        for (GraphNode g : nodes) {
+            if (count != 0) {
+                external += ",";
+            }
+            external += g.getName();
             count++;
         }
-        return getName()+"|"+external;
+        return getName() + "|" + external;
     }
 }

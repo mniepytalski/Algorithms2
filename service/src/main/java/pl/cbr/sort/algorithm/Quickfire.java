@@ -3,7 +3,8 @@ package pl.cbr.sort.algorithm;
 import pl.cbr.sort.SortBase;
 import pl.cbr.sort.SortTask;
 
-import java.util.*;
+
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -18,9 +19,9 @@ public class Quickfire<T extends Comparable<T>> extends SortBase<T> {
 
         quickSort(new SortTask(data, 0, data.length - 1));
 
-        while(tasks.isEmpty()) {
+        while (tasks.isEmpty()) {
             for (SortTask task : tasks.keySet()) {
-                if ( !task.isBusy() ) {
+                if (!task.isBusy()) {
                     task.setBusy(true);
                     quickSort(task);
                 }
@@ -31,18 +32,18 @@ public class Quickfire<T extends Comparable<T>> extends SortBase<T> {
     private void quickSort(SortTask task) {
         if (task.getLeft() < task.getRight()) {
             if ((task.getRight() - task.getLeft()) < 18) {
-                insertionSort((T[])task.getData(), task.getLeft(), task.getRight());
+                insertionSort((T[]) task.getData(), task.getLeft(), task.getRight());
             } else {
-                int os = division((T[])task.getData(), task.getLeft(), task.getRight());
-                tasks.put(new SortTask(task.getData(), task.getLeft(), os - 1),0);
-                tasks.put(new SortTask(task.getData(),os + 1, task.getRight()),0);
+                int os = division((T[]) task.getData(), task.getLeft(), task.getRight());
+                tasks.put(new SortTask(task.getData(), task.getLeft(), os - 1), 0);
+                tasks.put(new SortTask(task.getData(), os + 1, task.getRight()), 0);
             }
         }
         tasks.remove(task);
     }
 
-    int division(T[] data, int left, int right ) {
-        int o = (right+left)/2;
+    int division(T[] data, int left, int right) {
+        int o = (right + left) / 2;
 
 //        swap(data,o,right);
         T tmp1 = data[o];
@@ -51,8 +52,8 @@ public class Quickfire<T extends Comparable<T>> extends SortBase<T> {
 
         int stored   = left;
 
-        for ( int i=left; i<right; i++ ) {
-            if ( (data[i]).compareTo(data[right]) < 0 ) {
+        for (int i = left; i < right; i++) {
+            if ((data[i]).compareTo(data[right]) < 0) {
 //                swap(data,i, stored);
                 T tmp2 = data[i];
                 data[i] = data[stored];
@@ -61,12 +62,12 @@ public class Quickfire<T extends Comparable<T>> extends SortBase<T> {
                 stored++;
             }
         }
-        swap(data,stored,right);
+        swap(data, stored, right);
 
         return stored;
     }
 
-    void swap(T[] data, int a,int b) {
+    void swap(T[] data, int a, int b) {
         T tmp1 = data[a];
         data[a] = data[b];
         data[b] = tmp1;
@@ -75,15 +76,14 @@ public class Quickfire<T extends Comparable<T>> extends SortBase<T> {
 
     void insertionSort(T[] data, int left, int right) {
 
-        for ( int j = left + 1; j <= right; j++) {
+        for (int j = left + 1; j <= right; j++) {
             int i = j - 1;
             T value = data[j];
-            while(i >= left && data[i].compareTo(value) > 0 ) {
-                data[i+1] = data[i];
+            while (i >= left && data[i].compareTo(value) > 0) {
+                data[i + 1] = data[i];
                 i--;
             }
-            data[i+1] = value;
+            data[i + 1] = value;
         }
     }
-
 }

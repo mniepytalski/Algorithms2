@@ -36,10 +36,10 @@ public class SortTask {
 
     @Override
     public String toString() {
-        return "SortTask{" +
-                "left=" + left +
-                ", right=" + right +
-                ", busy=" + busy +
-                '}';
+        return "SortTask{"
+                + "left=" + left
+                + ", right=" + right
+                + ", busy=" + busy
+                + '}';
     }
 }

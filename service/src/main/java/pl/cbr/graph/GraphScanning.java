@@ -8,12 +8,11 @@ import java.util.List;
 public class GraphScanning {
 
 
-    // przeszukanie wglab
     public void scanning(List<GraphNode> gn) {
 
     }
 
-    void dfs_visit() {
+    void dfsVisit() {
 
     }
 }

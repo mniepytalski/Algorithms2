@@ -20,17 +20,16 @@ public class QuicksortGenericTest {
 	public void testQuickfire() {
 		SortBase<Integer>   sort = new Quickfire<>();
 		GenericSortTool<Integer> tool = new GenericSortTool<>();
-		Integer  arr[]  = generateRandomIntegerArray(SAMPLE_SIZE, Integer.MAX_VALUE);
+		Integer[]  arr  = generateRandomIntegerArray(SAMPLE_SIZE, Integer.MAX_VALUE);
 		sort.sort(arr);
 		assertTrue("Not sorted", tool.test(arr));
 	}
-
 
 	@Test 
 	public void testSortInteger() {
 		SortBase<Integer>   sort = new QuicksortSimple<>();
     	GenericSortTool<Integer> tool = new GenericSortTool<>();
-    	Integer  arr[]  = generateRandomIntegerArray(SAMPLE_SIZE, Integer.MAX_VALUE);
+    	Integer[]  arr  = generateRandomIntegerArray(SAMPLE_SIZE, Integer.MAX_VALUE);
 		sort.sort(arr);
 		assertTrue("Not sorted", tool.test(arr));
 	}
@@ -39,7 +38,7 @@ public class QuicksortGenericTest {
 	public void testSortInteger2() {
 		SortBase<Integer>   sort = new Quicksort<>();
     	GenericSortTool<Integer> tool = new GenericSortTool<>();
-    	Integer  arr[]  = generateRandomIntegerArray(SAMPLE_SIZE, Integer.MAX_VALUE);
+    	Integer[]  arr  = generateRandomIntegerArray(SAMPLE_SIZE, Integer.MAX_VALUE);
 		sort.sort(arr);
 		assertTrue("Not sorted", tool.test(arr));
 	}
@@ -48,7 +47,7 @@ public class QuicksortGenericTest {
 	public void testSystemSort() {
     	SortBase<Integer>   sort = new SystemSort<>();
     	GenericSortTool<Integer> tool = new GenericSortTool<>();
-    	Integer  arr[]  = generateRandomIntegerArray(SAMPLE_SIZE, Integer.MAX_VALUE);
+    	Integer[]  arr  = generateRandomIntegerArray(SAMPLE_SIZE, Integer.MAX_VALUE);
 		sort.sort(arr);
 		assertTrue("Not sorted", tool.test(arr));
 	}
@@ -58,10 +57,9 @@ public class QuicksortGenericTest {
 		SortBase<Float>   sort = new QuicksortSimple<>();
     	GenericSortTool<Float> tool = new GenericSortTool<>();
         int size    = SAMPLE_SIZE;
-        Float  arr[]  = new Float[size];
+        Float[]  arr  = new Float[size];
         IntStream.range(0,arr.length).forEach(i->arr[i]=(float)((Math.random())*10000 ));
         sort.sort(arr);
-//        tool.print(arr);      
         assertTrue("Not sorted", tool.test(arr));
 	}
 
@@ -80,5 +78,4 @@ public class QuicksortGenericTest {
 				.boxed()
 				.toArray(Integer[]::new);
 	}
-
 }
