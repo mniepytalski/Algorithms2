@@ -2,12 +2,12 @@ package pl.cbr.sort;
 
 public class SortTask {
 
-    Object data[];
+    Object[] data;
     int left;
     int right;
     boolean busy;
 
-    public SortTask(Object data[], int left, int right) {
+    public SortTask(Object[] data, int left, int right) {
         this.data = data;
         this.left = left;
         this.right = right;

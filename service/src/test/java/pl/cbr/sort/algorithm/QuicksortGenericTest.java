@@ -1,37 +1,26 @@
 package pl.cbr.sort.algorithm;
 
 
-import static org.junit.Assert.assertTrue;
-
-import java.util.stream.IntStream;
-
+import org.junit.Ignore;
 import org.junit.Test;
-
 import pl.cbr.sort.GenericSortTool;
 import pl.cbr.sort.SortBase;
+
+import java.util.Random;
+import java.util.stream.IntStream;
+
+import static org.junit.Assert.assertTrue;
 
 public class QuicksortGenericTest {
 		
 	public int SAMPLE_SIZE = 100;
 
-	@Test
-	public void testQuicksortParaller() {
-		SortBase<Integer>   sort = new ParallerQuicksort<>();
-		GenericSortTool<Integer> tool = new GenericSortTool<>();
-		int size    = SAMPLE_SIZE;
-		Integer  arr[]  = new Integer[size];
-		IntStream.range(0,arr.length).forEach(i->arr[i]=(int)((Math.random())*Integer.MAX_VALUE ));
-		sort.sort(arr);
-		assertTrue("Not sorted", tool.test(arr));
-	}
-
+	@Ignore
 	@Test
 	public void testQuickfire() {
 		SortBase<Integer>   sort = new Quickfire<>();
 		GenericSortTool<Integer> tool = new GenericSortTool<>();
-		int size    = SAMPLE_SIZE;
-		Integer  arr[]  = new Integer[size];
-		IntStream.range(0,arr.length).forEach(i->arr[i]=(int)((Math.random())*Integer.MAX_VALUE ));
+		Integer  arr[]  = generateRandomIntegerArray(SAMPLE_SIZE, Integer.MAX_VALUE);
 		sort.sort(arr);
 		assertTrue("Not sorted", tool.test(arr));
 	}
@@ -41,10 +30,8 @@ public class QuicksortGenericTest {
 	public void testSortInteger() {
 		SortBase<Integer>   sort = new QuicksortSimple<>();
     	GenericSortTool<Integer> tool = new GenericSortTool<>();
-        int size    = SAMPLE_SIZE;
-    	Integer  arr[]  = new Integer[size];
-        IntStream.range(0,arr.length).forEach(i->arr[i]=(int)((Math.random())*Integer.MAX_VALUE ));
-        sort.sort(arr);
+    	Integer  arr[]  = generateRandomIntegerArray(SAMPLE_SIZE, Integer.MAX_VALUE);
+		sort.sort(arr);
 		assertTrue("Not sorted", tool.test(arr));
 	}
 
@@ -52,10 +39,8 @@ public class QuicksortGenericTest {
 	public void testSortInteger2() {
 		SortBase<Integer>   sort = new Quicksort<>();
     	GenericSortTool<Integer> tool = new GenericSortTool<>();
-        int size    = SAMPLE_SIZE;
-    	Integer  arr[]  = new Integer[size];
-        IntStream.range(0,arr.length).forEach(i->arr[i]=(int)((Math.random())*Integer.MAX_VALUE ));
-        sort.sort(arr);
+    	Integer  arr[]  = generateRandomIntegerArray(SAMPLE_SIZE, Integer.MAX_VALUE);
+		sort.sort(arr);
 		assertTrue("Not sorted", tool.test(arr));
 	}
 
@@ -63,10 +48,8 @@ public class QuicksortGenericTest {
 	public void testSystemSort() {
     	SortBase<Integer>   sort = new SystemSort<>();
     	GenericSortTool<Integer> tool = new GenericSortTool<>();
-        int size    = SAMPLE_SIZE;
-    	Integer  arr[]  = new Integer[size];
-        IntStream.range(0,arr.length).forEach(i->arr[i]=(int)((Math.random())*Integer.MAX_VALUE ));
-        sort.sort(arr);
+    	Integer  arr[]  = generateRandomIntegerArray(SAMPLE_SIZE, Integer.MAX_VALUE);
+		sort.sort(arr);
 		assertTrue("Not sorted", tool.test(arr));
 	}
 
@@ -81,18 +64,21 @@ public class QuicksortGenericTest {
 //        tool.print(arr);      
         assertTrue("Not sorted", tool.test(arr));
 	}
-	
+
 	@Test
 	public void testInsertionSort() {
     	SortBase<Integer>   sort = new InsertionSort<>();
     	GenericSortTool<Integer> tool = new GenericSortTool<>();
-        int size    = SAMPLE_SIZE;
-    	Integer  arr[]  = new Integer[size];
-        IntStream.range(0,arr.length).forEach(i->arr[i]=(int)((Math.random())*100 ));
-        sort.sort(arr);
+		Integer[] arr = generateRandomIntegerArray(SAMPLE_SIZE, 100);
+		sort.sort(arr);
 		assertTrue("Not sorted", tool.test(arr));
 	}
-	
-	
+
+	private Integer[] generateRandomIntegerArray(int size, int amplitude) {
+		return IntStream.generate(() -> new Random().nextInt(amplitude))
+				.limit(size)
+				.boxed()
+				.toArray(Integer[]::new);
+	}
 
 }

@@ -5,12 +5,12 @@ import pl.cbr.sort.SortBase;
 public class QuicksortDualPivot<T extends Comparable<T>> extends SortBase<T> {
 
     @Override
-    public void sort(T data[]) {
+    public void sort(T[] data) {
         quickSort(data,0,data.length-1);
     }
 
     // TODO - implement dual pivots algorithm
-    private void quickSort(final T data[], final int left, final int right) {
+    private void quickSort(final T[] data, final int left, final int right) {
         if ( left<right ) {
             if ( (right-left) < 18 ) {
                 insertionSort(data, left, right);
@@ -22,7 +22,7 @@ public class QuicksortDualPivot<T extends Comparable<T>> extends SortBase<T> {
         }
     }
 
-    int divisionDualPivot(final T data[], final int left, final int right ) {
+    int divisionDualPivot(final T[] data, final int left, final int right ) {
 
         int third = (right+left)/3;
         int p1 = left + third;
@@ -54,7 +54,7 @@ public class QuicksortDualPivot<T extends Comparable<T>> extends SortBase<T> {
         return stored;
     }
 
-    int division(final T data[], final int left, final int right ) {
+    int division(final T[] data, final int left, final int right ) {
         int o = (right+left)/2;
 
         swap(data,o,right);
@@ -71,14 +71,14 @@ public class QuicksortDualPivot<T extends Comparable<T>> extends SortBase<T> {
         return stored;
     }
 
-    void swap(final T data[], final int a, final int b) {
+    void swap(final T[] data, final int a, final int b) {
         T tmp1 = data[a];
         data[a] = data[b];
         data[b] = tmp1;
     }
 
 
-    void insertionSort(final T data[], final int left, final int right) {
+    void insertionSort(final T[] data, final int left, final int right) {
 
         for ( int j = left + 1; j <= right; j++) {
             int i = j - 1;

@@ -8,11 +8,11 @@ public class QuicksortFast<T extends Comparable<T>> extends SortBase<T> {
     static final int INSERTION = 18;
 
     @Override
-    public void sort(T data[]) {
+    public void sort(T[] data) {
         quickSort(data,0,data.length-1);
     }
 
-    private void quickSort(T data[], int left, int right) {
+    private void quickSort(T[] data, int left, int right) {
         if ( left<right ) {
             if ( (right-left) < INSERTION ) {
 
@@ -26,7 +26,7 @@ public class QuicksortFast<T extends Comparable<T>> extends SortBase<T> {
         }
     }
 
-    int division(T data[], int left, int right ) {
+    int division(T[] data, int left, int right ) {
         int o = (right+left)>>1;
 
         T tmp = data[o];
@@ -52,7 +52,7 @@ public class QuicksortFast<T extends Comparable<T>> extends SortBase<T> {
         return stored;
     }
 
-    void insertionSortFast(T data[], int left, int right) {
+    void insertionSortFast(T[] data, int left, int right) {
         T tmp;
         for ( int i = left + 1; i <= right; i++) {
             for ( int j = i; j>left && data[j].compareTo(data[j-1]) < ZERO; j--) {
@@ -63,7 +63,7 @@ public class QuicksortFast<T extends Comparable<T>> extends SortBase<T> {
         }
     }
 
-    void insertionSort(T data[], int left, int right) {
+    void insertionSort(T[] data, int left, int right) {
 
         for ( int j = left + 1; j <= right; j++) {
             int i = j - 1;

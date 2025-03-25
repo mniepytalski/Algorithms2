@@ -5,11 +5,11 @@ import pl.cbr.sort.SortBase;
 public class Quicksort <T extends Comparable<T>> extends SortBase<T> {
 
 	@Override
-	public void sort(T data[]) {
+	public void sort(T[] data) {
         quickSort(data,0,data.length-1);
     }
 
-    private void quickSort(T data[], int left, int right) {
+    private void quickSort(T[] data, int left, int right) {
         if ( left<right ) {
         	if ( (right-left) < 18 ) {
         		insertionSort(data, left, right);
@@ -21,7 +21,7 @@ public class Quicksort <T extends Comparable<T>> extends SortBase<T> {
         }
     }
 
-    int division(T data[], int left, int right ) {
+    int division(T[] data, int left, int right ) {
         int o = (right+left)/2;
 
         swap(data,o,right);
@@ -38,14 +38,14 @@ public class Quicksort <T extends Comparable<T>> extends SortBase<T> {
        return stored;
     }
 
-    void swap(T data[], int a,int b) {
+    void swap(T[] data, int a,int b) {
             T tmp1 = data[a];
             data[a] = data[b];
             data[b] = tmp1;
     }
     
     
-	void insertionSort(T data[], int left, int right) {
+	void insertionSort(T[] data, int left, int right) {
 
 		for ( int j = left + 1; j <= right; j++) {
 			int i = j - 1;

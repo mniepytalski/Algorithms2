@@ -14,12 +14,11 @@ public class Quickfire<T extends Comparable<T>> extends SortBase<T> {
 
     ExecutorService executor = Executors.newFixedThreadPool(2);
 
-
-    public void sort(T data[]) {
+    public void sort(T[] data) {
 
         quickSort(new SortTask(data, 0, data.length - 1));
 
-        while( tasks.size() > 0) {
+        while(tasks.isEmpty()) {
             for (SortTask task : tasks.keySet()) {
                 if ( !task.isBusy() ) {
                     task.setBusy(true);
@@ -42,7 +41,7 @@ public class Quickfire<T extends Comparable<T>> extends SortBase<T> {
         tasks.remove(task);
     }
 
-    int division(T data[], int left, int right ) {
+    int division(T[] data, int left, int right ) {
         int o = (right+left)/2;
 
 //        swap(data,o,right);
@@ -67,14 +66,14 @@ public class Quickfire<T extends Comparable<T>> extends SortBase<T> {
         return stored;
     }
 
-    void swap(T data[], int a,int b) {
+    void swap(T[] data, int a,int b) {
         T tmp1 = data[a];
         data[a] = data[b];
         data[b] = tmp1;
     }
 
 
-    void insertionSort(T data[], int left, int right) {
+    void insertionSort(T[] data, int left, int right) {
 
         for ( int j = left + 1; j <= right; j++) {
             int i = j - 1;

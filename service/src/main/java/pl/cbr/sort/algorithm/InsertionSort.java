@@ -5,7 +5,7 @@ import pl.cbr.sort.SortBase;
 public class InsertionSort <T extends Comparable<T>> extends SortBase<T> {
 
 	@Override
-	public void sort(T data[]) {
+	public void sort(T[] data) {
 		for ( int j = 1; j<data.length; j++) {
 			int i = j - 1;
 			T value = data[j];
@@ -16,5 +16,4 @@ public class InsertionSort <T extends Comparable<T>> extends SortBase<T> {
 			data[i+1] = value;
 		}
 	}
-
 }
